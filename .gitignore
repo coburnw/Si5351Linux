@@ -1,0 +1,6 @@
+# C stuff
+*.o
+
+# emacs stuff
+*#
+*~

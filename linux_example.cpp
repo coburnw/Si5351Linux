@@ -22,16 +22,13 @@
 #include <string.h>
 #include <iostream>
 
-//#include "userspace-I2C/src/i2c.h"
-#include "LinuxInterface.h"
-#include "Si5351Arduino/src/si5351.h"
+#include "si5351_linux.h"
 
 void setup(Si5351 si5351)
 {
   bool i2c_found;
 
-  // Start serial and initialize the Si5351
-  //Serial.begin(57600);
+  // initialize the Si5351
   i2c_found = si5351.init(SI5351_CRYSTAL_LOAD_8PF, 0, 0);
   if(!i2c_found)
   {
@@ -53,12 +50,10 @@ void setup(Si5351 si5351)
 
 int main()
 {
-  uint8_t buss_id = 1;
+  uint8_t buss_id = 1;  // /dev/i2c-1
   uint8_t chip_addr = 0x60;
   
-  I2CInterface *i2c = new LinuxInterface(buss_id, chip_addr);
-  Si5351 si5351 = Si5351(chip_addr, i2c);
-
+  Si5351 si5351 = Si5351(buss_id, chip_addr);
   
   setup(si5351);
   

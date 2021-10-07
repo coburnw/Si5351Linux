@@ -6,7 +6,7 @@
 
 CC=g++ # define the compiler to use
 TARGET=linux_example # define the name of the executable
-SOURCES=linux_example.cpp userspace-i2c/src/i2c.cpp Si5351Arduino/src/si5351.cpp
+SOURCES=linux_example.cpp si5351_linux.cpp Si5351Arduino/src/si5351_base.cpp userspace-i2c/src/i2c.cpp #Si5351Arduino/src/si5351.cpp
 CFLAGS=-Wall #-O3
 LFLAGS=-lm -lc
 
@@ -27,7 +27,7 @@ purge: clean
 	rm -f $(TARGET)
 
 clean:
-	rm -f *.o
+	rm -f $(OBJS)
 
 ################################################################################
 ################################################################################
