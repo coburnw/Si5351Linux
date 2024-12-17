@@ -6,8 +6,9 @@
 
 CC=g++ # define the compiler to use
 TARGET=linux_example # define the name of the executable
-SOURCES=linux_example.cpp si5351_linux.cpp Si5351Arduino/src/si5351_base.cpp userspace-i2c/src/i2c.cpp #Si5351Arduino/src/si5351.cpp
-CFLAGS=-Wall #-O3
+SOURCES=linux_example.cpp ../../si5351_linux.cpp ../../Si5351Arduino/src/si5351_base.cpp ../../userspace-i2c/src/i2c.cpp #Si5351Arduino/src/si5351.cpp
+INCLUDES=../..
+CXXFLAGS=-Wall -I$(INCLUDES) #-O3
 LFLAGS=-lm -lc
 
 ################################################################################
